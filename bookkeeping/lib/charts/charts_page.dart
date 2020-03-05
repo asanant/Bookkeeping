@@ -28,8 +28,8 @@ class ChartState extends State<StatefulWidget>
   //保存状态
   bool get wantKeepAlive => true;
 
-  /// 类型 1支出 2收入
-  int _type = 1;
+  /// 类型 1收入 2支出
+  int _type = 2;
 
   /// 当月总支出金额
   double _monthExpenMoney = 0.0;
@@ -107,6 +107,7 @@ class ChartState extends State<StatefulWidget>
             id: 'Sales',
             domainFn: (ChartItemModel item, _) => item.id,
             measureFn: (ChartItemModel item, _) => item.money,
+            colorFn: (ChartItemModel item, _) => charts.Color.fromHex(code: "#FFD745"),
             data: chartItems,
             overlaySeries: true,
             labelAccessorFn: (ChartItemModel item, _) =>
@@ -119,6 +120,7 @@ class ChartState extends State<StatefulWidget>
             id: 'Sales',
             domainFn: (ChartItemModel item, _) => item.id,
             measureFn: (ChartItemModel item, _) => item.money,
+            colorFn: (ChartItemModel item, _) => charts.Color.fromHex(code: "#FFD745"),
             data: chartItems,
             overlaySeries: true,
             labelAccessorFn: (ChartItemModel item, _) =>
@@ -145,7 +147,9 @@ class ChartState extends State<StatefulWidget>
 
   @override
   Widget build(BuildContext context) {
+    // 适配
     super.build(context);
+
     return Scaffold(
       appBar: MyAppBar(
         titleWidget: _buildAppBarTitle(),
@@ -162,24 +166,10 @@ class ChartState extends State<StatefulWidget>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Checkbox(
-                        value: _type == 1,
-                        onChanged: (value) {
-                          _seletedType(1);
-                        },
-                      ),
-                      HighLightWell(
-                        onTap: () {
-                          _seletedType(1);
-                        },
-                        child: Text(
-                          '支出¥${Utils.formatDouble(double.parse(_monthExpenMoney.toStringAsFixed(2)))}',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Gaps.hGap(10),
+
                       Checkbox(
                         value: _type == 2,
+                        activeColor: Colours.app_main,
                         onChanged: (value) {
                           _seletedType(2);
                         },
@@ -190,6 +180,24 @@ class ChartState extends State<StatefulWidget>
                         },
                         child: Text(
                           '收入¥${Utils.formatDouble(double.parse(_monthIncomeMoney.toStringAsFixed(2)))}',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      Gaps.hGap(10),
+                      Checkbox(
+                        value: _type == 1,
+                        activeColor: Colours.app_main,
+                        onChanged: (value) {
+                          _seletedType(1);
+                        },
+                      ),
+
+                      HighLightWell(
+                        onTap: () {
+                          _seletedType(1);
+                        },
+                        child: Text(
+                          '支出¥${Utils.formatDouble(double.parse(_monthExpenMoney.toStringAsFixed(2)))}',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
@@ -358,13 +366,21 @@ class ChartState extends State<StatefulWidget>
                 bottom: BorderSide(width: 0.6, color: Colours.line))),
         child: Row(
           children: <Widget>[
-            Image.asset(
-              Utils.getImagePath('category/${model.image}'),
-              width: ScreenUtil.getInstance().setWidth(55),
+            Expanded(
+              flex: 1,
+              child: Text(
+                '${Utils.formatDouble(model.money)}',
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+                maxLines: 1,
+                style: TextStyle(
+                    fontSize: ScreenUtil.getInstance().setSp(36),
+                    color: Colors.black),
+              ),
             ),
-            Gaps.hGap(ScreenUtil.getInstance().setWidth(32)),
+
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
                   model.categoryName,
@@ -381,17 +397,11 @@ class ChartState extends State<StatefulWidget>
                 )
               ],
             ),
-            Expanded(
-              flex: 1,
-              child: Text(
-                '${Utils.formatDouble(model.money)}',
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.right,
-                maxLines: 1,
-                style: TextStyle(
-                    fontSize: ScreenUtil.getInstance().setSp(36),
-                    color: Colors.black),
-              ),
+            Gaps.hGap(ScreenUtil.getInstance().setWidth(32)),
+
+            Image.asset(
+              Utils.getImagePath('category/${model.image}'),
+              width: ScreenUtil.getInstance().setWidth(55),
             ),
           ],
         ),

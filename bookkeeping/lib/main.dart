@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         // showPerformanceOverlay: true,
         // debugShowMaterialGrid: true,
-        title: '小记账',
+        title: '土豆记账',
         theme: ThemeData(
             brightness: Brightness.light,
             primaryColor: Colours.app_main,

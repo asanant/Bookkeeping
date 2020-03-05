@@ -43,12 +43,13 @@ class _BookkeeppingState extends State<Bookkeepping>
 
   /// tabs
   final List<Tab> tabs = <Tab>[
+
+    Tab(
+      text: '收入',
+    ),
     Tab(
       text: '支出',
     ),
-    Tab(
-      text: '收入',
-    )
   ];
 
   /// 获取支出类别数据
@@ -211,8 +212,9 @@ class _BookkeeppingState extends State<Bookkeepping>
             child: TabBarView(
               controller: _tabController,
               children: <Widget>[
-                _buildExpenCategory(),
                 _buildIncomeCategory(),
+                _buildExpenCategory(),
+
               ],
             ),
           ),
@@ -403,16 +405,17 @@ class _BookkeeppingState extends State<Bookkeepping>
     _isAdd = false;
     CategoryItem item;
     if (_tabController.index == 0) {
-      item = _expenObjects[_selectedIndexLeft];
+      item = _inComeObjects[_selectedIndexLeft];
     } else {
-      item = _inComeObjects[_selectedIndexRight];
+      item = _expenObjects[_selectedIndexRight];
+
     }
 
     BillRecordModel model = BillRecordModel(
         widget.recordModel != null ? widget.recordModel.id : null,
         double.parse(_numberString),
         _remark,
-        _tabController.index + 1,
+        _tabController.index==0? 1:2 ,
         item.name,
         item.image,
         DateTime.fromMillisecondsSinceEpoch(_time.millisecondsSinceEpoch)
@@ -452,7 +455,7 @@ class _BookkeeppingState extends State<Bookkeepping>
         itemCount: _expenObjects.length,
         itemBuilder: (context, index) {
           return _getCategoryItem(
-              _expenObjects[index], index, _selectedIndexLeft);
+              _expenObjects[index], index, _selectedIndexRight);
         },
       ),
     );
@@ -475,7 +478,7 @@ class _BookkeeppingState extends State<Bookkeepping>
         itemCount: _inComeObjects.length,
         itemBuilder: (context, index) {
           return _getCategoryItem(
-              _inComeObjects[index], index, _selectedIndexRight);
+              _inComeObjects[index], index, _selectedIndexLeft);
         },
       ),
     );
@@ -486,14 +489,14 @@ class _BookkeeppingState extends State<Bookkeepping>
     return GestureDetector(
       onTap: () {
         if (_tabController.index == 0) {
-          //左边支出类别
+          //右边收入类别
           if (_selectedIndexLeft != index) {
             _selectedIndexLeft = index;
             _tapItemController.forward();
             setState(() {});
           }
         } else {
-          //右边收入类别
+          //左边支出类别
           if (_selectedIndexRight != index) {
             _selectedIndexRight = index;
             _tapItemController.forward();

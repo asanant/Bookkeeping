@@ -8,6 +8,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 
 class MainPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _MainPageState extends State<MainPage> {
 
   final _pageController = PageController();
 
-  final _pages = [Bill(), Charts()];
+  final _pages = [Charts(),Bill()];
 
   DateTime _lastTime;
   Future<bool> _isExit() {
@@ -37,6 +38,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return WillPopScope(
       onWillPop: _isExit,
       child: DefaultTextStyle(
@@ -51,9 +53,9 @@ class _MainPageState extends State<MainPage> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                _buildBottomItem(0, '账单', Icons.description),
+                _buildBottomItem(0, '统计', Icons.pie_chart),
                 _buildBottomItem(-1, '记账', null),
-                _buildBottomItem(1, '统计', Icons.pie_chart),
+                _buildBottomItem(1, '账单', Icons.description),
                 // _buildBottomItem(2, '账户', Icons.account_balance_wallet),
                 // _buildBottomItem(3, '我的', Icons.account_box),
               ],
@@ -88,9 +90,9 @@ class _MainPageState extends State<MainPage> {
     //未选中样式
     TextStyle textStyle = TextStyle(fontSize: 12.0, color: Colours.gray);
     TextStyle selectedTextStyle =
-        TextStyle(fontSize: 12.0, color: Colours.black);
+        TextStyle(fontSize: 12.0, color: Colours.app_main);
     Color iconColor = Colours.gray;
-    Color selectedIconColor = Colours.black;
+    Color selectedIconColor = Colours.app_main;
     double iconSize = 25;
 
     return data != null
@@ -169,8 +171,7 @@ class _MainPageState extends State<MainPage> {
                               height: 44,
                               child: CircleAvatar(
                                 backgroundColor: Colours.app_main,
-                                child:
-                                    const Icon(Icons.add, color: Colors.white),
+                                child:Image.asset("assets/images/icons/ic_main_add.png",width: ScreenUtil().setWidth(50),),
                               ),
                             ),
                           ),

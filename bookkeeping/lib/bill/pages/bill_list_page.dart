@@ -114,8 +114,6 @@ class _BillState extends State<Bill>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    // 适配
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Scaffold(
       // key: _globalKey,
       // drawer: MyDrawer(), // 左边抽屉
@@ -268,9 +266,9 @@ class _BillState extends State<Bill>
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  Utils.getImagePath('icons/food05', format: 'jpeg'),
+                  Utils.getImagePath('icons/bg_order_top', format: 'png'),
                 ),
-                fit: BoxFit.fill)),
+                fit: BoxFit.cover)),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -320,36 +318,6 @@ class _BillState extends State<Bill>
                 Positioned(
                   bottom: ScreenUtil.getInstance().setHeight(16),
                   child: Column(
-                    children: <Widget>[
-                      Text(
-                        '${Utils.formatDouble(double.parse(_monthModel.expenMoney.toStringAsFixed(2)))}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: ScreenUtil.getInstance().setSp(36),
-                            color: Colors.white),
-                      ),
-                      Text('${Utils.formatDouble(double.parse(_month))}月支出',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: ScreenUtil.getInstance().setSp(26),
-                              color: Colors.white))
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Container(
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Positioned(
-                  bottom: ScreenUtil.getInstance().setHeight(16),
-                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(
@@ -371,7 +339,38 @@ class _BillState extends State<Bill>
               ],
             ),
           ),
-        )
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            child: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                Positioned(
+                  bottom: ScreenUtil.getInstance().setHeight(16),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        '${Utils.formatDouble(double.parse(_monthModel.expenMoney.toStringAsFixed(2)))}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: ScreenUtil.getInstance().setSp(36),
+                            color: Colors.white),
+                      ),
+                      Text('${Utils.formatDouble(double.parse(_month))}月支出',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: ScreenUtil.getInstance().setSp(26),
+                              color: Colors.white))
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+
       ],
     );
   }
@@ -393,11 +392,21 @@ class _BillState extends State<Bill>
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Image.asset(
-                          Utils.getImagePath('category/${model.image}'),
-                          width: ScreenUtil.getInstance().setWidth(55),
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            '${Utils.formatDouble(model.money)}',
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.left,
+                            maxLines: 1,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: ScreenUtil.getInstance().setSp(36),
+                                color: Colours.dark),
+                          ),
                         ),
-                        Gaps.hGap(12),
+
+
                         Text(
                           model.categoryName,
                           style: TextStyle(
@@ -405,19 +414,11 @@ class _BillState extends State<Bill>
                               fontSize: ScreenUtil.getInstance().setSp(32),
                               color: Colours.black),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            '${Utils.formatDouble(model.money)}',
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.right,
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: ScreenUtil.getInstance().setSp(36),
-                                color: Colours.dark),
-                          ),
-                        )
+                        Gaps.hGap(12),
+                        Image.asset(
+                          Utils.getImagePath('category/${model.image}'),
+                          width: ScreenUtil.getInstance().setWidth(55),
+                        ),
                       ],
                     ),
                     model.remark.isNotEmpty
@@ -472,6 +473,17 @@ class _BillState extends State<Bill>
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      moneyString,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: ScreenUtil.getInstance().setSp(28),
+                          color: Colours.dark),
+                    ),
+                  ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -488,17 +500,7 @@ class _BillState extends State<Bill>
                       ),
                     ],
                   ),
-                  Expanded(
-                    child: Text(
-                      moneyString,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: ScreenUtil.getInstance().setSp(28),
-                          color: Colours.dark),
-                    ),
-                  )
+
                 ],
               ),
             ),
@@ -549,7 +551,7 @@ class _BillState extends State<Bill>
                         style: TextStyle(fontSize: 18),
                       ),
                       Positioned(
-                        left: 0,
+                        right: 0,
                         child: HighLightWell(
                           onTap: () {
                             // 删除记录
@@ -577,7 +579,7 @@ class _BillState extends State<Bill>
                         ),
                       ),
                       Positioned(
-                        right: 0,
+                        left: 0,
                         child: HighLightWell(
                           onTap: () {
                             NavigatorUtils.goBack(context);
@@ -615,17 +617,19 @@ class _BillState extends State<Bill>
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Row(
                     children: <Widget>[
-                      Text('金额', style: titleStyle),
-                      Gaps.hGap(20),
+
                       Expanded(
                         flex: 1,
                         child: Text('${Utils.formatDouble(model.money)}',
-                            textAlign: TextAlign.right,
+                            textAlign: TextAlign.left,
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
                             )),
-                      )
+                      ),
+                      Gaps.hGap(20),
+                      Text('金额', style: titleStyle),
+
                     ],
                   ),
                 ),
@@ -636,12 +640,11 @@ class _BillState extends State<Bill>
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      Text('分类', style: titleStyle),
-                      Gaps.hGap(23),
+
                       Expanded(
                         flex: 1,
                         child: Container(
-                          alignment: Alignment.centerRight,
+                          alignment: Alignment.centerLeft,
                           width: double.infinity,
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -659,7 +662,10 @@ class _BillState extends State<Bill>
                             ],
                           ),
                         ),
-                      )
+                      ),
+                      Gaps.hGap(23),
+                      Text('分类', style: titleStyle),
+
                     ],
                   ),
                 ),
@@ -668,13 +674,14 @@ class _BillState extends State<Bill>
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Row(
                     children: <Widget>[
-                      Text('时间', style: titleStyle),
-                      Gaps.hGap(20),
+
                       Expanded(
                         flex: 1,
                         child: Text('$timeString',
-                            textAlign: TextAlign.right, style: descStyle),
-                      )
+                            textAlign: TextAlign.left, style: descStyle),
+                      ),
+                      Gaps.hGap(20),
+                      Text('时间', style: titleStyle),
                     ],
                   ),
                 ),

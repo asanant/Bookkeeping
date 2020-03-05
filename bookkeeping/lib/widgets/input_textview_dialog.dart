@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../res/colours.dart';
+import '../res/colours.dart';
 import '../res/styles.dart';
 import '../routers/fluro_navigator.dart';
 import 'highlight_well.dart';
@@ -59,10 +61,16 @@ class _TextViewDialogState extends State<TextViewDialog> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    '填写备注',
-                    style:
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.edit,size: ScreenUtil().setWidth(30),color: Colours.app_main,),
+                      Text(
+                        '填写备注',
+                        style:
                         TextStyle(fontSize: ScreenUtil.getInstance().setSp(32)),
+                      )
+                    ],
                   ),
                 ),
                 Padding(
@@ -112,10 +120,11 @@ class _TextViewDialogState extends State<TextViewDialog> {
                             flex: 1,
                             child: HighLightWell(
                               child: Container(
+                                color: Colours.app_main,
                                 alignment: Alignment.center,
                                 child: Text(
                                   '确认',
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 16,color: Colors.white),
                                 ),
                               ),
                               onTap: () {
