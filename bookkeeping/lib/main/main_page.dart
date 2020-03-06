@@ -38,7 +38,6 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return WillPopScope(
       onWillPop: _isExit,
       child: DefaultTextStyle(

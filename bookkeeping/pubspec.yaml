@@ -53,6 +53,8 @@ dependencies:
   # google的图表库 https://github.com/google/charts
   charts_flutter: ^0.8.1
   # https://pub.dev/packages/intl
+  # 本地存储
+  shared_preferences: ^0.5.6+1
   intl: ^0.15.2
 
 dev_dependencies:

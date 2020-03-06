@@ -4,35 +4,35 @@
         "items": [
             {
                 "name": "工资",
-                "image": "income/工资_icon"
+                "image": "income/gz_icon"
             },
             {
                 "name": "奖金",
-                "image": "income/奖金_icon"
+                "image": "income/jiangjin_icon"
             },
             {
                 "name": "补贴",
-                "image": "income/补贴_icon"
+                "image": "income/bt_icon"
             },
             {
                 "name": "兼职",
-                "image": "income/兼职_icon"
+                "image": "income/jianzhi_icon"
             },
             {
                 "name": "租金",
-                "image": "income/租金_icon"
+                "image": "income/zj_icon"
             },
             {
                 "name": "房子",
-                "image": "income/房子_icon"
+                "image": "income/fz_icon"
             },
             {
                 "name": "理财",
-                "image": "income/理财_icon"
+                "image": "income/lc_icon"
             },
             {
                 "name": "股票",
-                "image": "income/股票_icon"
+                "image": "income/gp_icon"
             }
         ]
     },
@@ -41,47 +41,47 @@
         "items": [
             {
                 "name": "吃喝",
-                "image": "catering/吃喝_icon"
+                "image": "catering/ch_icon"
             },
             {
                 "name": "早餐",
-                "image": "catering/早餐_icon"
+                "image": "catering/zc_icon"
             },
             {
                 "name": "午餐",
-                "image": "catering/午餐_icon"
+                "image": "catering/wc2_icon"
             },
             {
                 "name": "晚餐",
-                "image": "catering/晚餐_icon"
+                "image": "catering/wc_icon"
             },
             {
                 "name": "夜宵",
-                "image": "catering/夜宵_icon"
+                "image": "catering/xy_icon"
             },
             {
                 "name": "零食",
-                "image": "catering/零食_icon"
+                "image": "catering/sl_icon"
             },
             {
                 "name": "水果",
-                "image": "catering/水果_icon"
+                "image": "catering/sg_icon"
             },
             {
                 "name": "买菜",
-                "image": "catering/买菜_icon"
+                "image": "catering/mc_icon"
             },
             {
                 "name": "饮料",
-                "image": "catering/饮料_icon"
+                "image": "catering/yl_icon"
             },
             {
                 "name": "咖啡",
-                "image": "catering/咖啡_icon"
+                "image": "catering/cf_icon"
             },
             {
                 "name": "酒水",
-                "image": "catering/酒水_icon"
+                "image": "catering/js_icon"
             }
         ]
     },
@@ -90,23 +90,23 @@
         "items": [
             {
                 "name": "日用品",
-                "image": "shopping/日用品_icon"
+                "image": "shopping/ryp_icon"
             },
             {
                 "name": "衣服",
-                "image": "shopping/衣服_icon"
+                "image": "shopping/yf_icon"
             },
             {
                 "name": "护肤美妆",
-                "image": "shopping/护肤美妆_icon"
+                "image": "shopping/hfmz_icon"
             },
             {
                 "name": "电子产品",
-                "image": "shopping/电子产品_icon"
+                "image": "shopping/dzcp_icon"
             },
             {
                 "name": "电器",
-                "image": "shopping/电器_icon"
+                "image": "shopping/dq_icon"
             }
         ]
     },
@@ -115,23 +115,23 @@
         "items": [
             {
                 "name": "娱乐",
-                "image": "recreation/娱乐_icon"
+                "image": "recreation/yl_icon"
             },
             {
                 "name": "游戏",
-                "image": "recreation/游戏_icon"
+                "image": "recreation/yx_icon"
             },
             {
                 "name": "聚会",
-                "image": "recreation/聚会_icon"
+                "image": "recreation/jh_icon"
             },
             {
                 "name": "运动",
-                "image": "recreation/运动_icon"
+                "image": "recreation/yd_icon"
             },
             {
                 "name": "旅行",
-                "image": "recreation/旅行_icon"
+                "image": "recreation/lx_icon"
             }
         ]
     },
@@ -140,19 +140,19 @@
         "items": [
             {
                 "name": "日常生活",
-                "image": "daily/日常生活_icon"
+                "image": "daily/rcsh_icon"
             },
             {
                 "name": "话费网费",
-                "image": "daily/话费网费_icon"
+                "image": "daily/hfwf_icon"
             },
             {
                 "name": "水电煤",
-                "image": "daily/水电煤_icon"
+                "image": "daily/sdm_icon"
             },
             {
                 "name": "清洁",
-                "image": "daily/清洁_icon"
+                "image": "daily/qj_icon"
             }
         ]
     },
@@ -161,11 +161,11 @@
         "items": [
             {
                 "name": "红包",
-                "image": "humanfeelings/红包_icon"
+                "image": "humanfeelings/hb_icon"
             },
             {
                 "name": "送礼",
-                "image": "humanfeelings/送礼_icon"
+                "image": "humanfeelings/sl_icon"
             }
         ]
     },
@@ -174,11 +174,11 @@
         "items": [
             {
                 "name": "房租",
-                "image": "housing/房租_icon"
+                "image": "housing/fz_icon"
             },
             {
                 "name": "房贷",
-                "image": "housing/房贷_icon"
+                "image": "housing/fd_icon"
             }
         ]
     },
@@ -187,31 +187,31 @@
         "items": [
             {
                 "name": "交通",
-                "image": "traffic/交通_icon"
+                "image": "traffic/jt_icon"
             },
             {
                 "name": "公交",
-                "image": "traffic/公交_icon"
+                "image": "traffic/gj_icon"
             },
             {
                 "name": "打车",
-                "image": "traffic/打车_icon"
+                "image": "traffic/dc_icon"
             },
             {
                 "name": "地铁",
-                "image": "traffic/地铁_icon"
+                "image": "traffic/dt_icon"
             },
             {
                 "name": "高铁",
-                "image": "traffic/高铁_icon"
+                "image": "traffic/gt_icon"
             },
             {
                 "name": "自行车",
-                "image": "traffic/自行车_icon"
+                "image": "traffic/zxc_icon"
             },
             {
                 "name": "飞机",
-                "image": "traffic/飞机_icon"
+                "image": "traffic/fj_icon"
             }
         ]
     },
@@ -220,19 +220,19 @@
         "items": [
             {
                 "name": "加油",
-                "image": "car/加油_icon"
+                "image": "car/jyou_icon"
             },
             {
                 "name": "汽车维修",
-                "image": "car/汽车维修_icon"
+                "image": "car/qcwx_icon"
             },
             {
                 "name": "车险",
-                "image": "car/车险_icon"
+                "image": "car/cxian_icon"
             },
             {
                 "name": "买车",
-                "image": "car/买车_icon"
+                "image": "car/mc_icon"
             }
         ]
     },
@@ -241,31 +241,31 @@
         "items": [
             {
                 "name": "物流",
-                "image": "other/物流_icon"
+                "image": "other/wl_icon"
             },
             {
                 "name": "医疗",
-                "image": "other/医疗_icon"
+                "image": "other/yl_icon"
             },
             {
                 "name": "学习",
-                "image": "other/学习_icon"
+                "image": "other/xx_icon"
             },
             {
                 "name": "考试",
-                "image": "other/考试_icon"
+                "image": "other/ks_icon"
             },
             {
                 "name": "宠物",
-                "image": "other/宠物_icon"
+                "image": "other/cw_icon"
             },
             {
                 "name": "保险",
-                "image": "other/保险_icon"
+                "image": "other/bx_icon"
             },
             {
                 "name": "其他",
-                "image": "other/其他_icon"
+                "image": "other/qt_icon"
             }
         ]
     }

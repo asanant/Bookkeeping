@@ -163,6 +163,23 @@ class ChartState extends State<StatefulWidget>
               delegate:
                   SliverChildBuilderDelegate((BuildContext context, int index) {
                 return Column(children: <Widget>[
+
+                  Container(
+                    // color: Colors.red,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width * 0.4,
+                    child: OverflowBox(
+                        minWidth: MediaQuery.of(context).size.width,
+                        child: charts.PieChart(
+                            _type == 1 ? _expendChartDatas : _incomeChartDatas,
+                            animate: true,
+                            defaultRenderer: charts.ArcRendererConfig(
+                                arcRendererDecorators: [
+                                  charts.ArcLabelDecorator(
+                                    labelPosition: charts.ArcLabelPosition.auto,
+                                  ),
+                                ]))),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -202,22 +219,6 @@ class ChartState extends State<StatefulWidget>
                         ),
                       ),
                     ],
-                  ),
-                  Container(
-                    // color: Colors.red,
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.width * 0.4,
-                    child: OverflowBox(
-                        minWidth: MediaQuery.of(context).size.width,
-                        child: charts.PieChart(
-                            _type == 1 ? _expendChartDatas : _incomeChartDatas,
-                            animate: true,
-                            defaultRenderer: charts.ArcRendererConfig(
-                                arcRendererDecorators: [
-                                  charts.ArcLabelDecorator(
-                                    labelPosition: charts.ArcLabelPosition.auto,
-                                  ),
-                                ]))),
                   ),
                 ]);
               }, childCount: 1),
